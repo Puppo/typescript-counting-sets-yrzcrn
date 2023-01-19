@@ -3,12 +3,18 @@ function countSetsOfThree(numbers: number[], threshold: number): number {
     values: [number, number, number];
     sum: number;
   }> = [];
-  for (let i = 0; i < numbers.length; i++) {
-    for (let j = 0; j < numbers.length - 1; i++) {
-      for (let z = 0; z < numbers.length - 2; i++) {
+  for (let i = 0; i < numbers.length - 2; i++) {
+    for (let j = i + 1; j < numbers.length - 1; j++) {
+      for (let k = j + 1; k < numbers.length; k++) {
+        const values: [number, number, number] = [
+          numbers[i],
+          numbers[j],
+          numbers[k],
+        ];
+        const sum = values.reduce((a, b) => a + b, 0);
         sets.push({
-          values: [i, j, z],
-          sum: i + j + z,
+          values,
+          sum,
         });
       }
     }
