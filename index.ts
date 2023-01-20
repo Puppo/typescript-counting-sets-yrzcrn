@@ -20,7 +20,7 @@ function countSetsOfThree(numbers: number[], threshold: number): number {
     }
   }
 
-  return sets.filter((set) => set.sum > threshold).length;
+  return sets.filter((set) => set.sum <= threshold).length;
 }
 
 append(`countSetsOfThree([1,2,3,4], 7)`, countSetsOfThree([1, 2, 3, 4], 7), 2);
@@ -36,6 +36,8 @@ append(
 
 function append(description: string, actual: number, expected: number) {
   const item = document.createElement('div');
+  const color = expected === actual ? 'green' : 'red';
+  item.style.color = color;
   item.textContent = `${description}. Expected: ${expected}. Actual: ${actual}.`;
   document.querySelector('#results').append(item);
 }
